@@ -52,8 +52,6 @@ const fillDB = async (data: any) => {
         pair: data.base + key,
         original_rate: data.rates[key],
         fee: FEE,
-        fee_amount: data.rates[key] * FEE,
-        rate_with_fee: data.rates[key] * (FEE + 1),
       });
       await rate.save();
     }
@@ -62,8 +60,6 @@ const fillDB = async (data: any) => {
       pair: "USDARS",
       original_rate: data.rates["ARS"] / data.rates["USD"],
       fee: FEE,
-      fee_amount: (data.rates["ARS"] / data.rates["USD"]) * FEE,
-      rate_with_fee: (data.rates["ARS"] / data.rates["USD"]) * (FEE + 1),
     });
     await usdars.save();
 
@@ -71,8 +67,6 @@ const fillDB = async (data: any) => {
       pair: "USDBRL",
       original_rate: data.rates["BRL"] / data.rates["USD"],
       fee: FEE,
-      fee_amount: (data.rates["BRL"] / data.rates["USD"]) * FEE,
-      rate_with_fee: (data.rates["BRL"] / data.rates["USD"]) * (FEE + 1),
     });
     await usdbrl.save();
 
@@ -80,8 +74,6 @@ const fillDB = async (data: any) => {
       pair: "BRLARS",
       original_rate: data.rates["ARS"] / data.rates["BRL"],
       fee: FEE,
-      fee_amount: (data.rates["ARS"] / data.rates["BRL"]) * FEE,
-      rate_with_fee: (data.rates["ARS"] / data.rates["BRL"]) * (FEE + 1),
     });
     await brlars.save();
 

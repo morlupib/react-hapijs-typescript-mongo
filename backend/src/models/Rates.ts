@@ -24,16 +24,25 @@ const rateSchema = new Schema(
     },
     fee_amount: {
       type: Number,
-      required: true,
+      required: false,
     },
     rate_with_fee: {
       type: Number,
-      required: true,
+      required: false,
     },
   },
   {
     timestamps: true,
   }
 );
+
+rateSchema.pre<IRate>("save", async function (next) {
+  const rate = this;
+
+  rate.fee_amount = rate.original_rate * rate.fee;
+  rate.rate_with_fee = rate.original_rate * (rate.fee + 1);
+
+  next();
+});
 
 export default model<IRate>("Rates", rateSchema);

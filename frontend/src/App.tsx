@@ -1,15 +1,17 @@
 import React from 'react';
-import './App.css';
-import RatesList from './components/RatesList';
+import { BrowserRouter } from "react-router-dom";
+
+import Header from './components/header/Header';
+import Section from './components/section/Section';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <section className="App-section">
-        <RatesList></RatesList>
-      </section>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Section />
+    </BrowserRouter>
   );
 }
 
